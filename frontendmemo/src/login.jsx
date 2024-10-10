@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';   
+import { loginSuccess, loginFail } from './actions';
+import { useSelector } from 'react-redux';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.errors);
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -43,11 +46,11 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/login', { email, password });
-      // Handle successful login (e.g., store token, navigate to dashboard)
+      dispatch(loginSuccess(response.data.user)); // Dispatch login success action
       navigate('/dashboard');
     } catch (error) {
-      // Handle login errors (e.g., display error messages)
-      setLoading(false);
+      dispatch(loginFail(error.response.data.errors)); // Dispatch login fail action
+      setLoading(false); // Update loading state after catching error
       setErrors(error.response.data.errors);
     }
   };
@@ -65,6 +68,7 @@ const Login = () => {
             onChange={handleEmailChange}
           />
           {errors.email && <p>{errors.email}</p>}
+          {error.email && <p>{error.email}</p>}
         </div>
         <div>
           <label htmlFor="password">Password:</label>
