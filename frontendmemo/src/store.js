@@ -1,5 +1,6 @@
 // src/store.js
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'; // Middleware for asynchronous actions
 
 const initialState = {
   isLoggedIn: false,
@@ -31,6 +32,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk)); // Apply thunk middleware
 
 export default store;

@@ -20,6 +20,10 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const handleLoginSuccess = (response) => {
+    const token = response.data.token;
+    document.cookie = `auth_token=${token}; Path=/; HttpOnly; Secure`; // Assuming HTTPS
+  };
   const validateForm = () => {
     const errors = {};
 
@@ -46,11 +50,12 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/login', { email, password });
-      dispatch(loginSuccess(response.data.user)); // Dispatch login success action
+      dispatch(loginSuccess(response.data.user));
+      handleLoginSuccess(response);
       navigate('/dashboard');
     } catch (error) {
       dispatch(loginFail(error.response.data.errors)); // Dispatch login fail action
-      setLoading(false); // Update loading state after catching error
+      setLoading(false);
       setErrors(error.response.data.errors);
     }
   };
