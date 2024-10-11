@@ -1,0 +1,16 @@
+.forgot-container {
+    text-align: center;
+    padding: 50px;
+    background: #fff;
+    margin: 10% auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forgot-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
