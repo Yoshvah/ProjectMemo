@@ -1,0 +1,116 @@
+/* Container principale */
+ .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #f7f7f7;
+  } 
+  
+  .login-box {
+    background: linear-gradient(to right, #57d7eb, #1b6fdd);
+    border-radius: 20px;
+    margin-top: 70px;
+    padding: 40px;
+    width: 550px;
+    height: 80%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    justify-content: justify;
+  }
+  
+  h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+    justify-content: justify;
+    margin-left: 10px;
+    display:contents;
+  
+   
+  }
+  
+  .justify{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+   
+  }
+  
+  input {
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-top: -30px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .password-group {
+    position: relative;
+  }
+  
+  .password-icon {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    cursor: pointer;
+    margin-top: -16px;
+  }
+  
+  .login-button {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2F80ED;
+    margin-left: 150px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background: #1a73e8;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 150px;
+  }
+  
+  .signup-link {
+    color: #1b6fdd;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  
+  p {
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 150px;
+  }
+  
