@@ -1,0 +1,138 @@
+ 
+     
+  .form-container {
+    background: linear-gradient(135deg, #3fb4db, #052652); 
+    margin-top: 70px;
+    border-radius: 20px;
+    height: 90vh;
+    width: 35%;
+    padding: 60px;
+    margin: 5px auto;
+    box-shadow: 0px 4px 20px rgba(10, 0, 0, 0.1);
+    color: rgb(9, 21, 43);
+ 
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    margin-left: -25px;
+  }
+  .form-group {
+    margin-bottom: 5px;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;  
+    color: #000;
+    display: block;
+    flex-direction: column;
+    padding: -30px;
+    display: flex;
+  }
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #0f0101;
+
+  }
+
+    
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0f7fa;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+     
+  }
+  .password-group {
+    position: relative;
+  }
+
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000;
+    margin-top: 10px;
+  }
+
+  .submit-btn {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2d9cdb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 60px;
+  }
+
+  .submit-btn:hover {
+    background-color: #1a73e8;
+  }
+
+    
+  .login-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .login-text a {
+    color: #f0f5f8;
+    text-decoration: underline #f0f5f8;
+  }
+
+  .login-text a:hover {
+    text-decoration: underline #f0f5f8;
+  }
+
+  .submit-btn2 {
+    width: 30%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2d9cdb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 730px;
+    margin-top: 274px;
+  }
+
+  .submit-btn:hover2 {
+    background-color: #1a73e8;
+  }
+  .h3{
+    color: #050000;
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 150px;
+  }
+  .h1{
+    color: #050000;
+    margin-top: 50px;
+    margin-top: -150px;
+    font-size: 90px;
+   
+  } 
+  .logo1 {
+    margin-left: 1400px;
+    width: 400px;
+    height: 70%;
+  
+  }

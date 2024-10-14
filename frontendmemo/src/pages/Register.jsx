@@ -1,134 +1,84 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import '../Styles/Signup.css'; // Importation du fichier CSS
+import Header from '../components/Header';
+import { NavLink } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+const SignupForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const validateForm = () => {
-    const errors = {};
-
-    if (!name) {
-      errors.name = 'Name is required';
-    }
-
-    if (!email) {
-      errors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = 'Invalid email format';
-    }
-
-    if (!password) {
-      errors.password = 'Password is required';
-    } else if (password.length < 6) {
-      errors.password = 'Password must be at least 6 characters long';
-    }
-
-    if (password !== confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
-    }
-
-    setErrors(errors);
-    return Object.keys(errors).length === 0; // Return true if no errors
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await axios.post('/api/register', {
-        name,
-        email,
-        password,
-      });
-      // Handle successful registration (e.g., display success message, redirect to login)
-      alert('Registration successful! Please log in.');
-      navigate('/login');
-    } catch (error) {
-      // Handle registration errors (e.g., display error messages)
-      setLoading(false);
-      setErrors(error.response.data.errors);
-    }
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-          />
-          {errors.name && <p>{errors.name}</p>}
+    <>
+    <Header />
+    <div className="form-container">
+      <h2>Create new Account</h2>
+      <form>
+        <div className="form-group">
+          <label htmlFor="email">E-mail:</label>
+          <input type="email" id="email" placeholder="Enter your mail" />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
+
+        <div className="form-group">
+          <label className='name' htmlFor="name">Name:</label>
+          <input type="text" id="name" placeholder="Enter your name" />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+
+        <div className="form-group">
+          <label className='name' htmlFor="lastname">Lastname:</label>
+          <input type="text" id="lastname" placeholder="Enter your lastname" />
+        </div>
+
+        <div className="form-group password-group">
+          <label className='name' htmlFor="password">Password:</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
-            value={password}
-            onChange={handlePasswordChange}
+            placeholder="Enter your password"
           />
-          {errors.password && <p>{errors.password}</p>}
+          <span className="toggle-password" onClick={togglePasswordVisibility}>
+            {showPassword ? <FaEyeSlash />: <FaEye />}
+          </span>
         </div>
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password:</label>
+
+        <div className="form-group password-group">
+          <label htmlFor="confirmPassword">Confirm password:</label>
           <input
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             id="confirmPassword"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
+            placeholder="Confirm your password"
           />
-          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+          <span
+            className="toggle-password"
+            onClick={toggleConfirmPasswordVisibility}
+          >
+            {showConfirmPassword ? <FaEyeSlash />: <FaEye />}
+          </span>
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Registering...' : 'Register'}
-        </button>
+      
+        <button type="submit" className="submit-btn">Sign in</button>
       </form>
+     
+      <p className="login-text">
+        Already have an account? 
+        <NavLink to='/src/pages/Login.jsx'>
+        Log in
+        </NavLink>
+      
+      </p>
+     
+    
     </div>
+    </>
   );
 };
 
-export default Register;
+export default SignupForm;

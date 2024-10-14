@@ -15,12 +15,14 @@ function App() {
   return (
     <div>
         <Provider store={store}>
+          <BrowserRouter>
           <Routes>
             <Route path="/" element={<Acceuil />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/src/pages/Login.jsx" element={<Login />} />
+            <Route path="/src/pages/Register.jsx" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
+          </BrowserRouter>
         </Provider>
     </div>
   );
