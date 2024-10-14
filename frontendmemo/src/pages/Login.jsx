@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleLoginSuccess = (response) => {
     const token = response.data.token;
-    document.cookie = `auth_token=${token}; Path=/; HttpOnly; Secure`; // Assuming HTTPS
+    document.cookie = `auth_token=${token}; Path=/; HttpOnly; Secure`;
   };
   const validateForm = () => {
     const errors = {};
@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     setErrors(errors);
-    return Object.keys(errors).length === 0; // Return true if no errors
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -56,7 +56,7 @@ const Login = () => {
       handleLoginSuccess(response);
       navigate('/dashboard');
     } catch (error) {
-      dispatch(loginFail(error.response.data.errors)); // Dispatch login fail action
+      dispatch(loginFail(error.response.data.errors));
       setLoading(false);
       setErrors(error.response.data.errors);
     }
