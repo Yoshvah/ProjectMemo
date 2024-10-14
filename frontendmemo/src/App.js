@@ -14,7 +14,6 @@ import '../src/Styles/style.css.map';
 function App() {
   return (
     <div>
-      <BrowserRouter>
         <Provider store={store}>
           <Routes>
             <Route path="/" element={<Acceuil />} />
@@ -23,7 +22,6 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Provider>
-      </BrowserRouter>
     </div>
   );
 }
