@@ -1,6 +1,5 @@
-// src/store.js
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'; // Middleware for asynchronous actions
+import { thunk } from 'redux-thunk'; // Middleware for asynchronous actions
 
 const initialState = {
   isLoggedIn: false,

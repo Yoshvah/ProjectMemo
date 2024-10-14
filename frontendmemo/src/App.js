@@ -1,9 +1,11 @@
-import { BrowserRouter,Route ,Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Acceuil from './pages/Acceuil';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import { Provider } from 'react-redux';
+import store from './store'; // Import your store
 import '../src/Styles/bootstrap.css';
 import '../src/Styles/responsive.css';
 import '../src/Styles/style.css';
@@ -13,12 +15,14 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Acceuil />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/" element={<Acceuil />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Provider>
       </BrowserRouter>
     </div>
   );

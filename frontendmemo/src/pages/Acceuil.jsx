@@ -42,7 +42,7 @@ const Acceuil = () => {
                   </ul>
                 </div>
                 <div className="quote_btn-container">
-                  <a href="/login">Log in</a>
+                    <a href="/login" style={{ marginRight: "30px" }}>Log in</a>
                 </div>
                 <div className="quote_btn-container">
                   <a href="/register">Register</a>
