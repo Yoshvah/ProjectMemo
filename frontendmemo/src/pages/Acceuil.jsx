@@ -15,7 +15,7 @@ const Acceuil = () => {
           <p className="h1">Chat Memories</p>
         </div>
         <div>
-          <NavLink to="/src/pages/Login.jsx">
+          <NavLink to="/src/pages/BodyMessage.jsx">
             <button className="submit-btn2">Get Started</button>
           </NavLink>
         </div>

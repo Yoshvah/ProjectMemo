@@ -1,0 +1,53 @@
+.account-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin-left: 640px;
+    width: 690px;
+    height: 90%;
+    margin-top: 290px;
+  }
+  
+  .user-icon img {
+    width: 200px;
+    height: 90%;
+    border-radius: 50%;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .logout-button {
+    background-color: #0b48c2;
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: #0b48c2;
+    color: white;
+  }
+  
+  .add-account-button {
+    background: linear-gradient(to right, #66d9ef, #1c77c3);
+    color: white;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  

@@ -10,7 +10,9 @@ import '../src/Styles/bootstrap.css';
 import '../src/Styles/responsive.css';
 import '../src/Styles/style.css';
 import '../src/Styles/style.css.map';
+import ProtectedRoute from './components/ProtectedRoute';
 import Forgot from './components/forgot';
+import BodyMessage from './pages/BodyMessage'
 
 function App() {
   return (
@@ -22,7 +24,17 @@ function App() {
             <Route path="/src/pages/Login.jsx" element={<Login />} />
             <Route path="/src/pages/Register.jsx" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+           <Route path ="/src/pages/BodyMessage.jsx" element={<BodyMessage />} />
             <Route path ="/src/components/forgot.jsx" element={<Forgot />} />
+            <Route 
+          path="/src/pages/BodyMessage.jsx" 
+          element={
+            <ProtectedRoute>
+              <BodyMessage />
+            </ProtectedRoute>
+          }
+        />
+     
           </Routes>
           </BrowserRouter>
         </Provider>
