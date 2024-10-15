@@ -10,6 +10,7 @@ import '../src/Styles/bootstrap.css';
 import '../src/Styles/responsive.css';
 import '../src/Styles/style.css';
 import '../src/Styles/style.css.map';
+import Forgot from './components/forgot';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/src/pages/Login.jsx" element={<Login />} />
             <Route path="/src/pages/Register.jsx" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path ="/src/components/forgot.jsx" element={<Forgot />} />
           </Routes>
           </BrowserRouter>
         </Provider>

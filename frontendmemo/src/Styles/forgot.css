@@ -1,0 +1,49 @@
+.forgot {
+  text-align: center;
+  padding: 50px;
+  background: linear-gradient(135deg, #3fb4db, #052652); 
+  margin: 10% auto;
+  width: 30%;
+  height: 490px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+   flex-direction: column;
+}
+
+.forgot input[type="email"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px ;
+  margin-top: 70px;
+}
+
+.login-button2{
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0750a8;
+  margin-left: 150px;
+  color: rgb(237, 242, 247);
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 60px;
+  transition: background-color 0.3s ease;
+  margin-right: 100px;
+}
+
+.login-button2:hover {
+  background: #1a73e8;
+}
+.link{
+  color: rgb(237, 242, 247);
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: -15px;
+  margin-top: 70px;
+}
+.link:hover {
+  text-decoration: underline;
+  color: antiquewhite;
+}
+

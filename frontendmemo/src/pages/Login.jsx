@@ -113,8 +113,8 @@ const Login = () => {
           {error.email && <p>{error.email}</p>}
 
         </div>
-        <button type="submit" className="log">Log in</button>
-        <NavLink to="/"
+        <button type="submit" className="submit-btn">Log in</button>
+        <NavLink to="/src/components/forgot.jsx"
           className="forgot-password">forgot your password
           </NavLink>
       </form>
