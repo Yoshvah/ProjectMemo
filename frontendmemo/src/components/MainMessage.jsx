@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import AccountOptions from "./Account.jsx";
 import '../Styles/style.css'; // Make sure to import your CSS file
 import '@fortawesome/fontawesome-free/css/all.min.css';
-function MainMessage({ selectedMenu }) {
+
+function MainMessage({ selectedMenu, handleSelectMenu }) {
   const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar
 
   const toggleSidebar = () => {
@@ -42,30 +43,38 @@ function MainMessage({ selectedMenu }) {
               <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
                 {/* Button visible only on small screens */}
                 <button
-                  className="btn btn-outline-dark mb-2 d-block d-sm-none" // Button color for collapse
+                  className="btn btn-outline-dark mb-2 d-block d-sm-none"
                   onClick={toggleSidebar}
                 >
-                  {isCollapsed ? '>' : 'x'} {/* Change button text based on collapsed state */}
+                  {isCollapsed ? '>' : 'x'} 
                 </button>
                 
-                {/* Regular sidebar button hidden on smaller screens */}
+                {/* Regular sidebar button hidden on larger screens */}
                 <button
-                  className="btn btn-outline-dark mb-2 d-none d-sm-block" // Button for larger screens
+                  className="btn btn-outline-dark mb-2 d-none d-sm-block"
                   onClick={toggleSidebar}
                 >
-                  {isCollapsed ? '>' : 'x'} {/* Change button text based on collapsed state */}
+                  {isCollapsed ? '>' : 'x'}
                 </button>
 
                 <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   <li className="nav-item">
-                    <a href="#" className="nav-link align-middle px-0 text-dark">
-                      <i className="fs-4 bi-house"></i>{" "}
+                    <a 
+                      href="#" 
+                      className="nav-link align-middle px-0 text-dark" 
+                      onClick={() => handleSelectMenu('message')}
+                    >
+                      <i className="fs-4 bi-house"></i>
                       <span className={`ms-1 d-none d-sm-inline ${isCollapsed ? "d-none" : ""}`}>Message</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="nav-link px-0 align-middle text-dark">
-                      <i className="fs-4 bi-people"></i>{" "}
+                    <a 
+                      href="#" 
+                      className="nav-link px-0 align-middle text-dark" 
+                      onClick={() => handleSelectMenu('Ai')}
+                    >
+                      <i className="fs-4 bi-people"></i>
                       <span className={`ms-1 d-none d-sm-inline ${isCollapsed ? "d-none" : ""}`}>AI Chat</span>
                     </a>
                   </li>
@@ -90,7 +99,7 @@ function MainMessage({ selectedMenu }) {
                   </a>
                   <ul className="dropdown-menu dropdown-menu-light text-small shadow">
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#" onClick={() => handleSelectMenu('settings')}>
                         Settings
                       </a>
                     </li>
@@ -103,7 +112,7 @@ function MainMessage({ selectedMenu }) {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#" onClick={() => handleSelectMenu('logout')}>
                         Sign out
                       </a>
                     </li>
