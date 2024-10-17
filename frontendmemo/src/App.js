@@ -10,6 +10,8 @@ import '../src/Styles/bootstrap.css';
 import '../src/Styles/responsive.css';
 import '../src/Styles/style.css';
 import '../src/Styles/style.css.map';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Include the Bootstrap JS
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is loaded as well
 import ProtectedRoute from './components/ProtectedRoute';
 import Forgot from './components/forgot';
 import BodyMessage from './pages/BodyMessage'
