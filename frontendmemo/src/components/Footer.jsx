@@ -1,18 +1,33 @@
-import React from "react";
-import'../Styles/Footer.css'
+// import React from "react";
+// import'../Styles/Footer.css'
 
-const Header = () => {
-  return (
-    <div>
-       <footer className="cont">
-        <p>
-          &copy; <span className=""></span> All Rights Reserved By
-          <a href="/">Free Html Templates</a>
-        </p>
-      </footer>
+// const Header = () => {
+//   return (
+//     <div>
+//        <footer className="cont">
+//         <p>
+//           &copy; <span className=""></span> All Rights Reserved By
+//           <a href="/">Free Html Templates</a>
+//         </p>
+//       </footer>
        
-    </div>
+//     </div>
+//   );
+// };
+
+// export default Header;
+import React from "react";
+import '../Styles/Footer.css';
+
+const Footer = () => {
+  return (
+    <footer className="footer-container">
+      <p>
+        &copy; All Rights Reserved By{" "}
+        <a href="/">Free Html Templates</a>
+      </p>
+    </footer>
   );
 };
 
-export default Header;
+export default Footer;

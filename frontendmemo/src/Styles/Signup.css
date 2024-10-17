@@ -144,7 +144,121 @@
 
  }
 
- .contai {
-   border: transparent solid;
-   width: 50%;
- }
+/* kl */
+/* General styles */
+.sub_page {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.contai {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.logo1 {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  margin: 20px auto;
+}
+
+.h3 {
+  color: #020c14;
+  font-size: 32px;
+  margin-top: 20px;
+  font-family: 'Cambria', serif;
+}
+
+.h1 {
+  color: #0a2fd6;
+  font-size: 48px;
+  font-family: 'Times New Roman', serif;
+  margin-top: 10px;
+}
+
+.submit-btn2 {
+  width: 200px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2d9cdb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+.submit-btn2:hover {
+  background-color: #1a73e8;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .h3 {
+    font-size: 24px;
+  }
+
+  .h1 {
+    font-size: 36px;
+  }
+
+  .logo1 {
+    width: 90%;
+  }
+
+  .submit-btn2 {
+    width: 100%;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .h3 {
+    font-size: 28px;
+  }
+
+  .h1 {
+    font-size: 42px;
+  }
+
+  .logo1 {
+    width: 80%;
+  }
+
+  .submit-btn2 {
+    width: 50%;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+  .h3 {
+    font-size: 36px;
+  }
+
+  .h1 {
+    font-size: 48px;
+  }
+
+  .logo1 {
+    width: 60%;
+  }
+
+  .submit-btn2 {
+    width: 30%;
+  }
+}
