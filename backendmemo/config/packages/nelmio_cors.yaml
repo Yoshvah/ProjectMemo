@@ -1,12 +1,16 @@
-# config/packages/nelmio_cors.yaml
 nelmio_cors:
     defaults:
-        allow_origin: ['*']  # Change '*' to your frontend URL in production
+        allow_origin: ['http://localhost:3000']  # Set this to your frontend's URL
+        allow_credentials: true  # Allow cookies or HTTP credentials (if needed)
         allow_headers: ['Content-Type', 'Authorization', 'X-Requested-With']
-        allow_methods: ['GET', 'POST', 'OPTIONS']
-        max_age: 3600  # Optional: specify how long the results of a preflight request can be cached
+        allow_methods: ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']  # Specify the allowed HTTP methods
+        expose_headers: []  # If you want to expose additional headers
+        max_age: 3600  # How long to cache preflight responses
+
     paths:
-        '^/api/':  # Adjust this path to match your API routes
-            allow_origin: ['*']  # Again, specify your frontend URL in production
-            allow_headers: ['Content-Type', 'Authorization', 'X-Requested-With']
-            allow_methods: ['GET', 'POST', 'OPTIONS']
+        '^/api/':  # Adjust the path to match your API routes
+            allow_origin: ['http://localhost:3000']  # Frontend URL
+            allow_headers: ['Content-Type', 'Authorization']
+            allow_methods: ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
+            allow_credentials: true
+            max_age: 3600

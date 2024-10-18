@@ -1,8 +1,14 @@
 doctrine:
     dbal:
+        # configure these for your database
+        driver: 'pdo_mysql' # or 'pdo_pgsql' for PostgreSQL
+        server_version: '8.0' # or your DB version
+        charset: utf8mb4
         url: '%env(resolve:DATABASE_URL)%'
 
     orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: true
         mappings:
             App:
                 is_bundle: false

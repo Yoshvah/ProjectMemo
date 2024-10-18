@@ -1,17 +1,14 @@
 <?php
-
-// src/Entity/User.php
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
-
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver; // Add this line
 /**
  * @ORM\Entity()
+ * @ORM\Table(name="user")
  */
-class User implements UserInterface
+class User
 {
     /**
      * @ORM\Id
@@ -42,31 +39,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank
+     * @Assert\Length(min=6, max=4096)
      */
     private $password;
 
-    // Getters and Setters for the above fields...
+    // Getters and setters...
     
-    // Implement UserInterface methods
-
-    public function getRoles(): array
-    {
-        // Return the roles for this user; modify as needed.
-        return ['ROLE_USER'];
-    }
-
-    public function getUserIdentifier(): string
-    {
-        return $this->email; // You can return a unique identifier like email or username.
-    }
-
-    public function eraseCredentials(): void
-    {
-        // If you have any temporary, sensitive data (like plain passwords), clear them here.
-        // In this example, there's nothing to clear.
-    }
-
-    // Example of Getter and Setter methods
     public function getId(): ?int
     {
         return $this->id;
