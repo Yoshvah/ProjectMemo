@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "../Styles/Signup.css"; // Importation du fichier CSS
+import axios from "axios"; // Import Axios for HTTP requests
+import "../Styles/Signup.css";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const SignupForm = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -17,37 +18,28 @@ const SignupForm = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Fonction pour gérer les changements dans le formulaire
+  // Validate form inputs
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
 
-    // Validation de l'email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
       newErrors.email = 'Invalid email address';
       isValid = false;
     }
-
-    // Validation du nom
     if (!formData.name) {
       newErrors.name = 'Name is required';
       isValid = false;
     }
-
-    // Validation du prénom
     if (!formData.lastname) {
       newErrors.lastname = 'Lastname is required';
       isValid = false;
     }
-
-    // Validation du mot de passe
     if (!formData.password) {
       newErrors.password = 'Password is required';
       isValid = false;
     }
-
-    // Validation de la confirmation du mot de passe
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
       isValid = false;
@@ -57,15 +49,28 @@ const SignupForm = () => {
     return isValid;
   };
 
-  // Gestion de la soumission du formulaire
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      navigate('/src/pages/BodyMessage.jsx'); // Navigates to BodyMessage only if the form is valid
+      try {
+        // Send data to your Symfony backend
+        const response = await axios.post('http://localhost:8000/api/register', {
+          email: formData.email,
+          name: formData.name,
+          lastname: formData.lastname,
+          password: formData.password,
+        });
+        
+        console.log(response.data); // You can handle success response here
+        navigate('/src/pages/BodyMessage.jsx'); // Navigate after successful registration
+      } catch (error) {
+        console.error('Error during registration:', error);
+        setErrors({ submit: 'Failed to register. Please try again.' }); // Handle error response
+      }
     }
   };
 
-  // Gestion des changements des champs de formulaire
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -74,7 +79,6 @@ const SignupForm = () => {
     });
   };
 
-  // Toggle Password Visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -97,6 +101,7 @@ const SignupForm = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleInputChange}
+              autoComplete="email" // Added autocomplete attribute
             />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
@@ -111,6 +116,7 @@ const SignupForm = () => {
               placeholder="Enter your name"
               value={formData.name}
               onChange={handleInputChange}
+              autoComplete="given-name" // Added autocomplete attribute
             />
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
@@ -125,6 +131,7 @@ const SignupForm = () => {
               placeholder="Enter your lastname"
               value={formData.lastname}
               onChange={handleInputChange}
+              autoComplete="family-name" // Added autocomplete attribute
             />
             {errors.lastname && <span className="error">{errors.lastname}</span>}
           </div>
@@ -139,6 +146,7 @@ const SignupForm = () => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleInputChange}
+              autoComplete="new-password" // Added autocomplete attribute
             />
             <span
               className="toggle-password"
@@ -157,6 +165,7 @@ const SignupForm = () => {
               placeholder="Confirm your password"
               value={formData.confirmPassword}
               onChange={handleInputChange}
+              autoComplete="new-password" // Added autocomplete attribute
             />
             <span
               className="toggle-password"
@@ -166,6 +175,8 @@ const SignupForm = () => {
             </span>
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
           </div>
+
+          {errors.submit && <span className="error">{errors.submit}</span>}
 
           <button type="submit" className="submit-btn">
             Sign in
@@ -181,4 +192,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default Register;

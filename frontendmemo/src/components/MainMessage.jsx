@@ -41,46 +41,9 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
             {/* Sidebar */}
             <div className={`col-auto ${isCollapsed ? "col-2" : "col-md-3 col-xl-2"} px-sm-2 px-0 bg-light-blue sidebar`}>
               <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
-                {/* Button visible only on small screens */}
-                <button
-                  className="btn btn-outline-dark mb-2 d-block d-sm-none"
-                  onClick={toggleSidebar}
-                >
-                  {isCollapsed ? '>' : 'x'} 
-                </button>
                 
-                {/* Regular sidebar button hidden on larger screens */}
-                <button
-                  className="btn btn-outline-dark mb-2 d-none d-sm-block"
-                  onClick={toggleSidebar}
-                >
-                  {isCollapsed ? '>' : 'x'}
-                </button>
-
-                <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                  <li className="nav-item">
-                    <a 
-                      href="#" 
-                      className="nav-link align-middle px-0 text-dark" 
-                      onClick={() => handleSelectMenu('message')}
-                    >
-                      <i className="fs-4 bi-house"></i>
-                      <span className={`ms-1 d-none d-sm-inline ${isCollapsed ? "d-none" : ""}`}>Message</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a 
-                      href="#" 
-                      className="nav-link px-0 align-middle text-dark" 
-                      onClick={() => handleSelectMenu('Ai')}
-                    >
-                      <i className="fs-4 bi-people"></i>
-                      <span className={`ms-1 d-none d-sm-inline ${isCollapsed ? "d-none" : ""}`}>AI Chat</span>
-                    </a>
-                  </li>
-                </ul>
-                <hr />
-                <div className="dropdown pb-4">
+                {/* User section at the top */}
+                <div className="dropdown pb-4 w-100">
                   <a
                     href="#"
                     className="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
@@ -118,10 +81,45 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
                     </li>
                   </ul>
                 </div>
+
+                {/* Links section centered */}
+                <div className="flex-grow-1 d-flex flex-column justify-content-center">
+                  <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li className="nav-item">
+                      <a 
+                        href="#" 
+                        className="nav-link align-middle px-0 text-dark" 
+                        onClick={() => handleSelectMenu('message')}
+                      >
+                        <i className="fs-4 bi-house"></i>
+                        <span className={`ms-1 ${isCollapsed ? "d-none" : ""}`}>Message</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a 
+                        href="#" 
+                        className="nav-link px-0 align-middle text-dark" 
+                        onClick={() => handleSelectMenu('Ai')}
+                      >
+                        <i className="fs-4 bi-people"></i>
+                        <span className={`ms-1 ${isCollapsed ? "d-none" : ""}`}>AI Chat</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Sidebar toggle button for small screens */}
+                <button
+                  className="btn btn-outline-dark mb-2 d-block d-sm-none"
+                  onClick={toggleSidebar}
+                >
+                  {isCollapsed ? '>' : 'x'}
+                </button>
               </div>
             </div>
+
+            {/* Main content area */}
             <div className="col py-3">
-              {/* Content area */}
               <nav id="main-navbar" className="navbar navbar-expand-lg" style={{ backgroundColor: '#d2e0eb' }}>
                 <div className="container-fluid">
                   <a className="navbar-brand" href="#">

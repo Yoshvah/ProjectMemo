@@ -1,47 +1,31 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import '../Styles/Header.css'
+import '../Styles/Header.css';
 
 const Header = () => {
   return (
     <div>
       <header className="header">
         <NavLink to="/" className="logo">
-        <h1 className="lo">Memories</h1>
+          <h1 className="lo">Memories</h1>
         </NavLink>
- 
-    {/*     <nav className="nav">
-          <NavLink
-            to="/"
-            className="nav-link"
-            activeClassName="active"
-            exact
-          >
-            HOME
-          </NavLink>
-
-         
-        </nav>   */}
-
-        <nav className="nav2">
+        
+        {/* Add the opening <nav> tag */}
+        <nav className="nav">
           <NavLink
             to="/src/pages/Login.jsx"
-            className="nav-link"
-            activeClassName="active"
-            exact
+            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             LOGIN
           </NavLink>
 
           <NavLink
             to="/src/pages/Register.jsx"
-            className="nav-link"
-            activeClassName="active"
+            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             REGISTER
           </NavLink>
-          
-        </nav>               
+        </nav> {/* Closing nav tag */}
       </header>
     </div>
   );
