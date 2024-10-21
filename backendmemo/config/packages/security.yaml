@@ -6,7 +6,6 @@ security:
 
     providers:
         app_user_provider:
-            # Define the user provider, usually fetching from a database entity
             entity:
                 class: App\Entity\User
                 property: email
@@ -19,14 +18,20 @@ security:
         main:
             # If you are building an API, set this to true
             stateless: true  # Important for API-based authentication
-            # Uncomment the authentication method you intend to use
-            # form_login:
-            #     login_path: login
-            #     check_path: login
-            #     # other options...
-            # If using JWT or token-based auth, configure here as well
+
+            # Allow anonymous access
+            anonymous: true
+            
+            # Specify the provider to use
+            provider: app_user_provider
+
+            # Logout configuration
+            logout:
+                path: app_logout
+                target: app_home
 
     access_control:
         # Define access rules
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }  # Allow registration without authentication
-        # Add more access rules as needed
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

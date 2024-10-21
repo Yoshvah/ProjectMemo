@@ -6,6 +6,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'; // Fallback to localhost if env is not set
+
+  // Log the API base URL for debugging
+  console.log('API Base URL:', API_BASE_URL);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -51,25 +56,40 @@ const Register = () => {
 
   // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      try {
-        // Send data to your Symfony backend
-        const response = await axios.post('http://localhost:8000/api/register', {
-          email: formData.email,
-          name: formData.name,
-          lastname: formData.lastname,
-          password: formData.password,
-        });
-        
-        console.log(response.data); // You can handle success response here
-        navigate('/src/pages/BodyMessage.jsx'); // Navigate after successful registration
-      } catch (error) {
-        console.error('Error during registration:', error);
-        setErrors({ submit: 'Failed to register. Please try again.' }); // Handle error response
-      }
+    e.preventDefault();  // Prevent default form submission
+    if (validateForm()) { // Validate form data
+        try {
+            // Send data to your Symfony backend
+            const response = await axios.post(`${API_BASE_URL}/api/register`, {
+                email: formData.email,
+                name: formData.name,
+                lastname: formData.lastname,
+                password: formData.password,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',  // Ensure the content type is set correctly
+                },
+            });
+
+            console.log(response.data); // Log the success response
+            navigate('/body-message'); // Navigate after successful registration (adjust path if necessary)
+        } catch (error) {
+            // Detailed error handling
+            if (error.response) {
+                // Server responded with a status other than 200 range
+                console.error('Error response:', error.response.data);
+            } else if (error.request) {
+                // Request was made but no response was received
+                console.error('Error request:', error.request);
+            } else {
+                // Something happened in setting up the request
+                console.error('Error message:', error.message);
+            }
+            // Set error message for the user
+            setErrors({ submit: 'Failed to register. Please try again.' });
+        }
     }
-  };
+};
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -101,7 +121,7 @@ const Register = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleInputChange}
-              autoComplete="email" // Added autocomplete attribute
+              autoComplete="email"
             />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
@@ -116,7 +136,7 @@ const Register = () => {
               placeholder="Enter your name"
               value={formData.name}
               onChange={handleInputChange}
-              autoComplete="given-name" // Added autocomplete attribute
+              autoComplete="given-name"
             />
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
@@ -131,7 +151,7 @@ const Register = () => {
               placeholder="Enter your lastname"
               value={formData.lastname}
               onChange={handleInputChange}
-              autoComplete="family-name" // Added autocomplete attribute
+              autoComplete="family-name"
             />
             {errors.lastname && <span className="error">{errors.lastname}</span>}
           </div>
@@ -146,7 +166,7 @@ const Register = () => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleInputChange}
-              autoComplete="new-password" // Added autocomplete attribute
+              autoComplete="new-password"
             />
             <span
               className="toggle-password"
@@ -165,7 +185,7 @@ const Register = () => {
               placeholder="Confirm your password"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              autoComplete="new-password" // Added autocomplete attribute
+              autoComplete="new-password"
             />
             <span
               className="toggle-password"
