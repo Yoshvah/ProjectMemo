@@ -1,264 +1,125 @@
- .form-container {
-   background: linear-gradient(135deg, #3fb4db, #052652);
-   margin-top: 70px;
-   border-radius: 20px;
-   height: 90vh;
-   width: 35%;
-   padding: 60px;
-   margin: 5px auto;
-   box-shadow: 0px 4px 20px rgba(10, 0, 0, 0.1);
-   color: rgb(9, 21, 43);
-
- }
-
- h2 {
-   text-align: center;
-   margin-bottom: 20px;
-   font-size: 68px;
-   margin-left: -25px;
- }
-
- .form-group {
-   margin-bottom: 5px;
-   text-align: left;
-   margin-left: 20px;
-   margin-top: 20px;
-   font-size: 16px;
-   font-weight: bold;
-   color: #000;
-   display: block;
-   flex-direction: column;
-   padding: -30px;
-   display: flex;
- }
-
- label {
-   display: block;
-   font-size: 16px;
-   margin-bottom: 5px;
-   color: #0f0101;
-
- }
-
-
- input[type="text"],
- input[type="email"],
- input[type="password"] {
-   width: 100%;
-   padding: 12px;
-   border: none;
-   border-radius: 8px;
-   background-color: #e0f7fa;
-   margin-bottom: 10px;
-   border: 1px solid #ccc;
-   font-size: 16px;
-
- }
-
- .password-group {
-   position: relative;
- }
-
- .toggle-password {
-   position: absolute;
-   right: 10px;
-   top: 50%;
-   transform: translateY(-50%);
-   cursor: pointer;
-   color: #000;
-   margin-top: 10px;
- }
-
- .submit-btn {
-   width: 80%;
-   padding: 12px;
-   border: none;
-   border-radius: 10px;
-   background-color: #2d9cdb;
-   color: white;
-   font-size: 16px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-   margin-left: 60px;
- }
-
- .submit-btn:hover {
-   background-color: #1a73e8;
- }
-
-
- .login-text {
-   text-align: center;
-   margin-top: 20px;
-   font-size: 14px;
- }
-
- .login-text a {
-   color: #f0f5f8;
-   text-decoration: underline #f0f5f8;
- }
-
- .login-text a:hover {
-   text-decoration: underline #f0f5f8;
- }
-
- .submit-btn2 {
-   width: 30%;
-   padding: 12px;
-   border: none;
-   border-radius: 10px;
-   background-color: #2d9cdb;
-   color: white;
-   font-size: 16px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-   margin-left: 630px;
-   margin-top: 274px;
- }
-
- .submit-btn:hover2 {
-   background-color: #1a73e8;
- }
-
- .h3 {
-   color: #020c14;
-    margin-top: 20px;
-   text-align: center;
-   margin-left: -415px;
-   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
- }
-
- .h1 {
-   color: #0a2fd6;
-   margin-top: 50px;
-   margin-top: -150px;
-   font-size: 90px;
-   font-family: 'Times New Roman', Times, serif;
-
- }
-
- .logo1 {
-   margin-left: 1400px;
-   width: 400px;
-   height: 70%;
-
- }
-
-/* kl */
-/* General styles */
-.sub_page {
-  padding: 20px;
-  background-color: #f4f4f4;
+.form-container {
+  background: linear-gradient(135deg, #3fb4db, #052652);
+  margin-top: 70px;
+  border-radius: 20px;
+  height: auto; /* Change height to auto for better responsiveness */
+  /* width: 90%; Change width to 90% for small screens */
+  max-width: 500px; /* Set max width for larger screens */
+  padding: 40px; /* Adjust padding for better spacing */
+  margin: 20px auto; /* Center with auto margin */
+  box-shadow: 0px 4px 20px rgba(10, 0, 0, 0.1);
+  color: rgb(9, 21, 43);
 }
 
-.slider {
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3.5rem; /* Use rem for responsive font size */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Increase margin for better spacing */
+  text-align: left;
+  font-size: 1rem; /* Use rem for responsive font size */
+  font-weight: bold;
+  color: #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
 }
 
-.contai {
+label {
+  margin-bottom: 5px;
+  color: #0f0101;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #e0f7fa;
+  margin-bottom: 10px;
+  font-size: 1rem; /* Use rem for responsive font size */
 }
 
-.logo1 {
-  width: 80%;
-  max-width: 400px;
-  height: auto;
-  margin: 20px auto;
+.password-group {
+  position: relative;
 }
 
-.h3 {
-  color: #020c14;
-  font-size: 32px;
-  margin-top: 20px;
-  font-family: 'Cambria', serif;
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000;
 }
 
-.h1 {
-  color: #0a2fd6;
-  font-size: 48px;
-  font-family: 'Times New Roman', serif;
-  margin-top: 10px;
-}
-
-.submit-btn2 {
-  width: 200px;
+.submit-btn {
+  width: 100%; /* Full width for buttons */
   padding: 12px;
   border: none;
   border-radius: 10px;
   background-color: #2d9cdb;
   color: white;
-  font-size: 16px;
+  font-size: 1rem; /* Use rem for responsive font size */
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 30px;
 }
 
-.submit-btn2:hover {
+.submit-btn:hover {
   background-color: #1a73e8;
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.875rem; /* Use rem for responsive font size */
+}
+
+.login-text a {
+  color: #f0f5f8;
+  text-decoration: underline;
+}
+
+.error {
+  color: red; /* Style for error messages */
+  font-size: 0.875rem; /* Make error messages smaller */
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .h3 {
-    font-size: 24px;
+  h2 {
+      font-size: 2.5rem; /* Adjust heading size */
   }
 
-  .h1 {
-    font-size: 36px;
+  .form-container {
+      padding: 20px; /* Less padding on small screens */
   }
 
-  .logo1 {
-    width: 90%;
-  }
-
-  .submit-btn2 {
-    width: 100%;
+  .submit-btn {
+      font-size: 0.875rem; /* Smaller button font */
   }
 }
 
 /* Tablet Styles */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .h3 {
-    font-size: 28px;
+  .form-container {
+      width: 80%; /* Adjust width for tablets */
+      height: auto;
   }
 
-  .h1 {
-    font-size: 42px;
-  }
-
-  .logo1 {
-    width: 80%;
-  }
-
-  .submit-btn2 {
-    width: 50%;
+  h2 {
+      font-size: 3rem; /* Adjust heading size */
   }
 }
 
 /* Desktop Styles */
 @media (min-width: 1025px) {
-  .h3 {
-    font-size: 36px;
-  }
-
-  .h1 {
-    font-size: 48px;
-  }
-
-  .logo1 {
-    width: 60%;
-  }
-
-  .submit-btn2 {
-    width: 30%;
+  .form-container {
+      width: 50%; /* Adjust width for larger screens */
+      height: auto;
   }
 }

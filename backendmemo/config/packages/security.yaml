@@ -1,8 +1,7 @@
 security:
-    # Use 'password_hashers' instead of 'encoders'
     password_hashers:
         App\Entity\User:
-            algorithm: auto  # This will automatically select the best hashing algorithm
+            algorithm: auto  # Automatically select the best hashing algorithm
 
     providers:
         app_user_provider:
@@ -16,15 +15,11 @@ security:
             security: false
 
         main:
-            # If you are building an API, set this to true
             stateless: true  # Important for API-based authentication
-
-            # Allow anonymous access
-            anonymous: true
-            
-            # Specify the provider to use
             provider: app_user_provider
-
+            # Use 'lazy: true' to allow unauthenticated access and defer authentication until needed
+            lazy: true
+            
             # Logout configuration
             logout:
                 path: app_logout

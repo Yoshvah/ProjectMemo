@@ -6,9 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'; // Fallback to localhost if env is not set
-
-  // Log the API base URL for debugging
+  const API_BASE_URL = 'http://localhost:8000'; // Ensure this is set correctly
   console.log('API Base URL:', API_BASE_URL);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +21,6 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Validate form inputs
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
@@ -54,42 +51,35 @@ const Register = () => {
     return isValid;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Prevent default form submission
-    if (validateForm()) { // Validate form data
-        try {
-            // Send data to your Symfony backend
-            const response = await axios.post(`${API_BASE_URL}/api/register`, {
-                email: formData.email,
-                name: formData.name,
-                lastname: formData.lastname,
-                password: formData.password,
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',  // Ensure the content type is set correctly
-                },
-            });
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const response = await axios.post(`${API_BASE_URL}/api/register`, {
+          email: formData.email,
+          name: formData.name,
+          lastname: formData.lastname,
+          password: formData.password,
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-            console.log(response.data); // Log the success response
-            navigate('/body-message'); // Navigate after successful registration (adjust path if necessary)
-        } catch (error) {
-            // Detailed error handling
-            if (error.response) {
-                // Server responded with a status other than 200 range
-                console.error('Error response:', error.response.data);
-            } else if (error.request) {
-                // Request was made but no response was received
-                console.error('Error request:', error.request);
-            } else {
-                // Something happened in setting up the request
-                console.error('Error message:', error.message);
-            }
-            // Set error message for the user
-            setErrors({ submit: 'Failed to register. Please try again.' });
+        console.log(response.data);
+        navigate('/body-message'); // Adjust path if necessary
+      } catch (error) {
+        if (error.response) {
+          console.error('Error response:', error.response.data);
+        } else if (error.request) {
+          console.error('Error request:', error.request);
+        } else {
+          console.error('Error message:', error.message);
         }
+        setErrors({ submit: 'Failed to register. Please try again.' });
+      }
     }
-};
+  };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -127,9 +117,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label className="name" htmlFor="name">
-              Name:
-            </label>
+            <label className="name" htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
@@ -142,9 +130,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label className="name" htmlFor="lastname">
-              Lastname:
-            </label>
+            <label className="name" htmlFor="lastname">Lastname:</label>
             <input
               type="text"
               id="lastname"
@@ -157,9 +143,7 @@ const Register = () => {
           </div>
 
           <div className="form-group password-group">
-            <label className="name" htmlFor="password">
-              Password:
-            </label>
+            <label className="name" htmlFor="password">Password:</label>
             <input
               type={showPassword ? "text" : "password"}
               id="password"
@@ -168,17 +152,14 @@ const Register = () => {
               onChange={handleInputChange}
               autoComplete="new-password"
             />
-            <span
-              className="toggle-password"
-              onClick={togglePasswordVisibility}
-            >
+            <span className="toggle-password" onClick={togglePasswordVisibility}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
 
           <div className="form-group password-group">
-            <label htmlFor="confirmPassword">Confirm password:</label>
+            <label className="name" htmlFor="confirmPassword">Confirm Password:</label>
             <input
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
@@ -187,10 +168,7 @@ const Register = () => {
               onChange={handleInputChange}
               autoComplete="new-password"
             />
-            <span
-              className="toggle-password"
-              onClick={toggleConfirmPasswordVisibility}
-            >
+            <span className="toggle-password" onClick={toggleConfirmPasswordVisibility}>
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
@@ -198,14 +176,10 @@ const Register = () => {
 
           {errors.submit && <span className="error">{errors.submit}</span>}
 
-          <button type="submit" className="submit-btn">
-            Sign in
-          </button>
+          <button type="submit" className="submit-btn">Create Account</button>
         </form>
-
         <p className="login-text">
-          Already have an account?
-          <NavLink to="/src/pages/Login.jsx">Log in</NavLink>
+          Already have an account? <NavLink to="/login">Log in</NavLink>
         </p>
       </div>
     </>

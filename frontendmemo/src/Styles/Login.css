@@ -1,74 +1,71 @@
-/* Container principale */
+/* Main container for the login page */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 100vh; /* Full height for better centering */
   padding: 10px;
   background-color: #f7f7f7;
 }
- 
+
+/* Login box with a gradient background */
 .login-box {
-  background: linear-gradient(135deg, #3fb4db, #052652); 
+  background: linear-gradient(135deg, #3fb4db, #052652);
   border-radius: 20px;
-  padding: 150px;
-  width: 30%;
-  height: 75vh;
+  padding: 40px 30px; /* Reduced padding for a more compact look */
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Max width for larger screens */
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  justify-content: justify;
-  margin: 80px;
-  margin-left: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Header style */
 .h2 {
   color: rgb(253, 251, 251);
-  font-size: 28px;
+  font-size: 24px; /* Adjusted for better readability */
   margin-bottom: 20px;
-  margin-top: -70px;
 }
 
+/* Input group styling */
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: left;
-  justify-content: justify;
-  display: contents;
-  margin-bottom: 20px;
-  margin-top: 70px;
-  width: 90%;
-  margin: 20px;
+  width: 100%; /* Full width of parent */
 }
 
+/* Input field styling */
 input {
-  width: 290px;
-  padding: 10px;
+  width: 100%; /* Full width for better responsiveness */
+  padding: 12px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #ccc; /* Added border for better definition */
   background-color: rgba(245, 243, 243, 0.8);
   font-size: 16px;
-  margin-top: -30px;
-  margin-left: -25px;
-
 }
 
+/* Input focus effect */
 input:focus {
   outline: none;
+  border: 1px solid #2d9cdb; /* Highlight on focus */
 }
 
+/* Password group styling */
 .password-group {
   position: relative;
 }
 
+/* Icon positioning for password visibility toggle */
 .password-icons {
   position: absolute;
   right: 10px;
-  top: 40px;
+  top: 50%; /* Center icon vertically */
+  transform: translateY(-50%); /* Adjust vertical alignment */
   cursor: pointer;
-  margin-top: -30px;
 }
 
-.log {
-  width: 80%;
+/* Button styling */
+.log, .login-button {
+  width: 100%; /* Full width for buttons */
   padding: 12px;
   border: none;
   border-radius: 10px;
@@ -77,40 +74,22 @@ input:focus {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 60px;
 }
 
-.log:hover {
+.log:hover, .login-button:hover {
   background-color: #1a73e8;
 }
 
-.login-button {
-  width: 40%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #2F80ED;
-  margin-left: 150px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background: #1a73e8;
-}
-
+/* Forgot password link styling */
 .forgot-password {
   display: block;
   margin-top: 10px;
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  margin-left: 50px;
+  font-size: 14px; /* Smaller font for less emphasis */
 }
 
+/* Sign up link styling */
 .signup-link {
   color: #1b6fdd;
   text-decoration: none;
@@ -121,9 +100,19 @@ input:focus {
   text-decoration: underline;
 }
 
-p {
-  color: white;
-  font-size: 16px;
-  margin-top: 20px;
-  margin-left: 50px;
+/* Error message styling */
+.error {
+  color: red; /* Red color for error messages */
+  font-size: 14px; /* Smaller font size */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 20px; /* Less padding for small screens */
+  }
+
+  .h2 {
+    font-size: 20px; /* Smaller heading for small screens */
+  }
 }

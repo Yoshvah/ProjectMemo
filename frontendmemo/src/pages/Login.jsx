@@ -17,7 +17,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.errors); // Fetch the error from Redux state
+  const error = useSelector((state) => state.errors);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -38,15 +38,12 @@ const Login = () => {
 
   const validateForm = () => {
     const errors = {};
-
     if (!email) {
       errors.email = 'Email is required';
     }
-
     if (!password) {
       errors.password = 'Password is required';
     }
-
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -64,11 +61,12 @@ const Login = () => {
       const response = await axios.post('/api/login', { email, password });
       dispatch(loginSuccess(response.data.user));
       handleLoginSuccess(response);
-      navigate('/src/pages/BodyMessage.jsx'); // Ensure the correct route path
+      navigate('/body-message'); // Ensure the correct route path
     } catch (error) {
       dispatch(loginFail(error.response.data.errors));
-      setLoading(false);
       setErrors(error.response.data.errors);
+    } finally {
+      setLoading(false); // Ensure loading state resets
     }
   };
 
@@ -79,42 +77,40 @@ const Login = () => {
         <div className='login-box'>
           <h2 className='h2'>Login</h2>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="input-group">
               <label htmlFor="email">Email:</label>
-              <div className="input-group">
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder='Enter your email address'
-                />
-              </div>
-              {errors.email && <p>{errors.email}</p>}
-              {error && error.email && <p>{error.email}</p>} {/* Ensure error is defined */}
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder='Enter your email address'
+              />
+              {errors.email && <p className="error">{errors.email}</p>}
+              {error && error.email && <p className="error">{error.email}</p>}
             </div>
-            <div>
+            <div className="input-group password-group">
               <label htmlFor="password">Password:</label>
-              <div className="input-group password-group">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  placeholder='Enter your password'
-                />
-                <span className="password-icons" onClick={togglePasswordVisibility}>
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-              {errors.password && <p>{errors.password}</p>}
-              {error && error.password && <p>{error.password}</p>} {/* Ensure error is defined */}
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder='Enter your password'
+              />
+              <span className="password-icons" onClick={togglePasswordVisibility}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              {errors.password && <p className="error">{errors.password}</p>}
+              {error && error.password && <p className="error">{error.password}</p>}
             </div>
-            <button type="submit" className="submit-btn">Log in</button>
-            <NavLink to="/src/components/forgot.jsx" className="forgot-password">Forgot your password?</NavLink>
+            <button type="submit" className="log" disabled={loading}>
+              {loading ? 'Logging in...' : 'Log in'}
+            </button>
+            <NavLink to="/forgot" className="forgot-password">Forgot your password?</NavLink>
           </form>
           <p>Not a member yet?
-            <NavLink to='/src/pages/Register.jsx' className="signup-link">Sign up</NavLink>
+            <NavLink to='/register' className="signup-link">Sign up</NavLink>
           </p>
         </div>
       </div>

@@ -1,0 +1,106 @@
+/* General section styling */
+.slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    margin-top: 0;
+    background-color: #f9f9f9; /* Light background for contrast */
+  }
+  
+  /* Left text content */
+  .text-content {
+    flex: 1;
+    max-width: 50%; /* Ensure it doesn't exceed half the screen */
+    text-align: left;
+  }
+  
+  .h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .h1 {
+    font-size: 48px;
+    color: #0a2fd6;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  
+  /* Right image content */
+  .image-content {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .logo1 {
+    width: 80%;
+    height: auto;
+  }
+  
+  /* Button styles with hover outline */
+  .submit-btn2 {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2d9cdb;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, outline 0.3s ease;
+  }
+  
+  /* Hover effect using Bootstrap's outline-like style */
+  .submit-btn2:hover {
+    background-color: #1a73e8;
+    outline: 2px solid #1a73e8;
+    outline-offset: 2px;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .slider {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .text-content, .image-content {
+      max-width: 100%; /* Full width for smaller screens */
+    }
+  
+    .image-content {
+      margin-top: 20px;
+    }
+  
+    .h1 {
+      font-size: 36px;
+    }
+  
+    .h3 {
+      font-size: 20px;
+    }
+  
+    .logo1 {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .h1 {
+      font-size: 28px;
+    }
+  
+    .h3 {
+      font-size: 18px;
+    }
+  
+    .submit-btn2 {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+  
