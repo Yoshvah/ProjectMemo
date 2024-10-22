@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios for HTTP requests
+import axios from "axios";
 import "../Styles/Signup.css";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const API_BASE_URL = 'http://localhost:8000'; // Ensure this is set correctly
+  const API_BASE_URL = 'http://localhost:8000'; 
   console.log('API Base URL:', API_BASE_URL);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +67,7 @@ const Register = () => {
         });
 
         console.log(response.data);
-        navigate('/body-message'); // Adjust path if necessary
+        navigate('/src/pages/BodyMessage.jsx'); 
       } catch (error) {
         if (error.response) {
           console.error('Error response:', error.response.data);
