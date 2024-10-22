@@ -60,10 +60,6 @@ const Register = () => {
           name: formData.name,
           lastname: formData.lastname,
           password: formData.password,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
         });
 
         console.log(response.data);
