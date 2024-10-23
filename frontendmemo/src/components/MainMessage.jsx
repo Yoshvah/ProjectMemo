@@ -3,6 +3,7 @@ import AccountOptions from "./Account.jsx";
 import '../Styles/style.css'; // Make sure to import your CSS file
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ChatCard from "../pages/User/ChatCard.jsx";
+import Profile from "../pages/User/Profile.jsx";
 function MainMessage({ selectedMenu, handleSelectMenu }) {
   const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar
 
@@ -18,6 +19,9 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
       break;
     case "Ai":
       content = <div>Bienvenue sur la page Ai</div>;
+      break;
+    case "Profile":
+      content = <><Profile/></>;
       break;
     case "settings":
       content = <div>Bienvenue sur la page setting</div>;
@@ -67,7 +71,7 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#" onClick={() => handleSelectMenu('Profile')}>
                         Profile
                       </a>
                     </li>
