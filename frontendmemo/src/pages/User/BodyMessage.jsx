@@ -24,8 +24,8 @@
 
 // export default App;
 import React, { useState } from 'react';
-import MainMessage from '../components/MainMessage'; // Nouveau composant
-import '../Styles/navbar.css'; 
+import MainMessage from '../../components/MainMessage'; // Nouveau composant
+import '../../Styles/navbar.css'; 
 
 function App() {
   const [selectedMenu, setSelectedMenu] = useState('message');

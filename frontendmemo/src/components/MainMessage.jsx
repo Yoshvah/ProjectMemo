@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AccountOptions from "./Account.jsx";
 import '../Styles/style.css'; // Make sure to import your CSS file
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import ChatCard from "../pages/ChatCard.jsx";
+import ChatCard from "../pages/User/ChatCard.jsx";
 function MainMessage({ selectedMenu, handleSelectMenu }) {
   const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar
 

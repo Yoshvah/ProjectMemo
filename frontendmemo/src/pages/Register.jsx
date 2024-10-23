@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Styles/Signup.css";
+import "../Styles/Register.css";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -52,7 +52,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();  // Prevent default GET request
     if (validateForm()) {
       try {
         const response = await axios.post(`${API_BASE_URL}/api/register`, {
@@ -61,9 +61,8 @@ const Register = () => {
           lastname: formData.lastname,
           password: formData.password,
         });
-
         console.log(response.data);
-        navigate('/src/pages/BodyMessage.jsx'); 
+        navigate('/src/pages/BodyMessage.jsx');
       } catch (error) {
         if (error.response) {
           console.error('Error response:', error.response.data);
@@ -76,6 +75,7 @@ const Register = () => {
       }
     }
   };
+  
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;

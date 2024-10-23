@@ -13,14 +13,14 @@ const Header = () => {
         {/* Add the opening <nav> tag */}
         <nav className="nav">
           <NavLink
-            to="/src/pages/Login.jsx"
+            to="/login"
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             LOGIN
           </NavLink>
 
           <NavLink
-            to="/src/pages/Register.jsx"
+            to="/register"
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             REGISTER

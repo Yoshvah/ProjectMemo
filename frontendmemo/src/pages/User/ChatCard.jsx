@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Styles/ChatCard.css'; // Make sure to import your CSS styles
+import '../../Styles/ChatCard.css'; // Make sure to import your CSS styles
 
 const ChatCard = () => {
   const [messages, setMessages] = useState([]);
@@ -64,7 +64,7 @@ const ChatCard = () => {
                         </li>
                       ))}
                     </ul>
-                    <div className="form-group mt-3 mb-0">
+                    <div className="formgroup mt-3 mb-0">
                       <textarea
                         className="form-control yo"
                         rows="3"

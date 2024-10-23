@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,13 +13,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegisterController extends AbstractController
 {
-    /**
-     * @Route("/api/register", name="api_register", methods={"POST", "OPTIONS"})
-     */
+    
+    #[Route('/api/register', name: 'api_register', methods: ['POST'])]
     public function register(
-        Request $request, 
-        UserPasswordHasherInterface $passwordHasher, 
-        EntityManagerInterface $entityManager, 
+        Request $request,
+        UserPasswordHasherInterface $passwordHasher,
+        EntityManagerInterface $entityManager,
         ValidatorInterface $validator
     ): JsonResponse {
         // Handle preflight CORS request
@@ -33,7 +32,7 @@ class RegisterController extends AbstractController
 
         // Step 1: Get data from the request (assuming it's JSON)
         $data = json_decode($request->getContent(), true);
-        
+
         $email = $data['email'] ?? null;
         $name = $data['name'] ?? null;
         $lastname = $data['lastname'] ?? null;
@@ -55,7 +54,7 @@ class RegisterController extends AbstractController
         $user->setEmail($email);
         $user->setName($name);
         $user->setLastName($lastname);
-        
+
         // Hash the password
         $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
         $user->setPassword($hashedPassword);

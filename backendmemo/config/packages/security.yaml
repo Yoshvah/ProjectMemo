@@ -1,7 +1,8 @@
 security:
+    # Hashers
     password_hashers:
         App\Entity\User:
-            algorithm: auto  # Automatically select the best hashing algorithm
+            algorithm: auto  # Automatically selects the best algorithm
 
     providers:
         app_user_provider:
@@ -17,16 +18,15 @@ security:
         main:
             stateless: true  # Important for API-based authentication
             provider: app_user_provider
-            # Use 'lazy: true' to allow unauthenticated access and defer authentication until needed
             lazy: true
             
-            # Logout configuration
             logout:
                 path: app_logout
                 target: app_home
+            custom_authenticator: App\Security\AuthControllerAuthenticator
 
     access_control:
-        # Define access rules
-        - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }  # Allow registration without authentication
-        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # Allow access to the registration and login routes without authentication
+        - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }

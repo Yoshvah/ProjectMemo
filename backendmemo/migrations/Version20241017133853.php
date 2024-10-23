@@ -14,18 +14,24 @@ final class Version20241017133853 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create users table and messenger messages';
+        return 'Create users table and messenger messages with additional fields (status, phone, birthdate, hobbies, slogan, role)';
     }
 
     public function up(Schema $schema): void
     {
-        // Create the users table only if it doesn't exist
+        // Create the users table only if it doesn't exist, with additional fields
         $this->addSql('CREATE TABLE IF NOT EXISTS users (
             id SERIAL NOT NULL,
             email VARCHAR(180) NOT NULL UNIQUE,
             name VARCHAR(100) NOT NULL,
             lastname VARCHAR(100) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            status VARCHAR(50) NOT NULL DEFAULT \'active\', -- Status field (active, inactive)
+            phone VARCHAR(15) DEFAULT NULL, -- Phone field (optional)
+            birthdate DATE DEFAULT NULL, -- Birthdate field
+            hobbies VARCHAR(255) DEFAULT NULL, -- Hobbies field (optional)
+            slogan VARCHAR(255) DEFAULT NULL, -- Slogan field (optional)
+            role VARCHAR(50) NOT NULL DEFAULT \'user\', -- Role field (admin or user)
             PRIMARY KEY(id)
         )');
 
@@ -45,7 +51,7 @@ final class Version20241017133853 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_75EA56E0FB7336F0 ON messenger_messages (queue_name)');
         $this->addSql('CREATE INDEX IDX_75EA56E0E3BD61CE ON messenger_messages (available_at)');
         $this->addSql('CREATE INDEX IDX_75EA56E016BA31DB ON messenger_messages (delivered_at)');
-        
+
         $this->addSql('CREATE OR REPLACE FUNCTION notify_messenger_messages() RETURNS TRIGGER AS $$
             BEGIN
                 PERFORM pg_notify(\'messenger_messages\', NEW.queue_name::text);
