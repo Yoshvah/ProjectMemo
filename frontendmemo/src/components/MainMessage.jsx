@@ -126,7 +126,7 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
               <nav id="main-navbar" className="navbar navbar-expand-lg" style={{ backgroundColor: '#d2e0eb' }}>
                 <div className="container-fluid">
                   <a className="navbar-brand" href="#">
-                    <h1>Memories</h1>
+                    <h1>Mook.mg</h1>
                   </a>
                   <form className="d-none d-md-flex input-group w-auto my-auto">
                     <input
