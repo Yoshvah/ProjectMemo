@@ -55,7 +55,8 @@ const Register = () => {
     e.preventDefault();  // Prevent default GET request
     if (validateForm()) {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/register`, {
+        console.log("Attempting POST request to:", `${API_BASE_URL}/api/register`);
+        const response = await axios.post(`${API_BASE_URL}/api/register`, {
           email: formData.email,
           name: formData.name,
           lastname: formData.lastname,
@@ -71,7 +72,13 @@ const Register = () => {
         } else {
           console.error('Error message:', error.message);
         }
-        setErrors({ submit: 'Failed to register. Please try again.' });
+        setErrors({ submit: 'Failed to register. Please try again.' 
+        });
+        console.info('email:',formData.email);
+        console.info('name:',formData.name);
+        console.info('lastname:',formData.lastname);
+        console.info('password:',formData.password);
+
       }
     }
   };

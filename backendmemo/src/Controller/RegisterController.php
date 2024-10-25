@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RegisterController extends AbstractController
 {
     
-    #[Route('/api/register', name: 'app-register', methods: ['GET'])]
+    #[Route('/api/register', name: 'app-register', methods: ['post'])]
     public function register(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
