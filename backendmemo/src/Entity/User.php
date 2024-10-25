@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver; // Add this line
+
 /**
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="user")
  */
 class User
@@ -15,36 +16,36 @@ class User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank
      * @Assert\Email
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
      */
-    private $lastname;
+    private string $lastname;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank
      * @Assert\Length(min=6, max=4096)
      */
-    private $password;
+    private string $password;
 
-    // Getters and setters...
-    
+    // Getters and Setters
+
     public function getId(): ?int
     {
         return $this->id;

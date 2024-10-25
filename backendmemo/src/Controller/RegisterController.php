@@ -13,8 +13,15 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegisterController extends AbstractController
 {
-    
-    #[Route('/api/register', name: 'app-register', methods: ['post'])]
+    // OPTIONS method to handle preflight requests
+    #[Route('/api/register', name: 'app-register-options', methods: ['OPTIONS'])]
+    public function options(): JsonResponse
+    {
+        return new JsonResponse(null, JsonResponse::HTTP_OK);
+    }
+
+    // POST method for user registration
+    #[Route('/api/register', name: 'app-register', methods: ['POST'])]
     public function register(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
@@ -23,7 +30,7 @@ class RegisterController extends AbstractController
     ): JsonResponse {
         // Step 1: Get data from the request (assuming it's JSON)
         $data = json_decode($request->getContent(), true);
-        dd($data);
+        
         $email = $data['email'] ?? null;
         $name = $data['name'] ?? null;
         $lastname = $data['lastname'] ?? null;
@@ -60,11 +67,14 @@ class RegisterController extends AbstractController
             return new JsonResponse(['errors' => $errorMessages], JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        // Step 5: Persist the user to the database
+        // Step 5: Persist the user to the database; Doctrine will generate the ID
         $entityManager->persist($user);
         $entityManager->flush();
 
-        // Step 6: Return a success response
-        return new JsonResponse(['message' => 'User registered successfully'], JsonResponse::HTTP_CREATED);
+        // Step 6: Return a success response with the generated ID
+        return new JsonResponse([
+            'message' => 'User registered successfully',
+            'userId' => $user->getId()  // Access the ID after flush
+        ], JsonResponse::HTTP_CREATED);
     }
 }

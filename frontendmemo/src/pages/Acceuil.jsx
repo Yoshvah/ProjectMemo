@@ -11,7 +11,7 @@ const Acceuil = () => {
             <section className="slider">
         <div className="text-content">
           <h2 className="h3">Welcome to</h2>
-          <p className="h1">Chat Memories</p>
+          <h1 data-text="HELLO!">MOOK</h1>
           <NavLink to="/Body-Message">
             <button className="submit-btn2">Get Started</button>
           </NavLink>

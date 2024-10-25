@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <header className="header">
         <NavLink to="/" className="logo">
-          <h1 className="lo">Memories</h1>
+          <h1 className="lo">MOOK.MG</h1>
         </NavLink>
         
         {/* Add the opening <nav> tag */}

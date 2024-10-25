@@ -4,7 +4,7 @@ import '../Styles/style.css'; // Make sure to import your CSS file
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ChatCard from "../pages/User/ChatCard.jsx";
 import Profile from "../pages/User/Profile.jsx";
-
+import Mook from "../pages/User/Mook.jsx";
 function MainMessage({ selectedMenu, handleSelectMenu }) {
   const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar
 
@@ -18,8 +18,8 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
     case "message":
       content = <><ChatCard/></>;
       break;
-    case "Ai":
-      content = <div>Bienvenue sur la page Ai</div>;
+    case "Mook":
+      content = <div><Mook/></div>;
       break;
     case "Profile":
       content = <><Profile/></>;
@@ -104,10 +104,10 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
                       <a 
                         href="#" 
                         className="nav-link px-0 align-middle text-dark" 
-                        onClick={() => handleSelectMenu('Ai')}
+                        onClick={() => handleSelectMenu('Mook')}
                       >
                         <i className="fs-4 bi-people"></i>
-                        <span className={`ms-1 ${isCollapsed ? "d-none" : ""}`}>AI Chat</span>
+                        <span className={`ms-1 ${isCollapsed ? "d-none" : ""}`}>Mook</span>
                       </a>
                     </li>
                   </ul>

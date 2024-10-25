@@ -103,4 +103,52 @@
       font-size: 16px;
     }
   }
-  
+  h1{
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    color: #f6d8d5;
+    font-size: 150px;
+  }
+  h1:hover{
+    opacity: 0.9;
+    text-shadow: 0px -5px #ec2225, 0px 5px #00c2cb, -5px 0px #ec2225, 5px 0px #00c2cb;
+  }
+  h1::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #e0ffff;
+    z-index: -1;
+  }
+  h1:hover::before{
+    animation: animate 12ms ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes animate{
+    0%, 100%{
+      top: -7px;
+      left: 0;
+      opacity: 1;
+    }
+    20%{
+      top: 0;
+      left: -10px;
+      opacity: 0.7;
+    }
+    40%{
+      top: 7px;
+      left: 0;
+      opacity: 0.2;
+    }
+    60%{
+      top: 0;
+      left: 10px;
+      opacity: 0.3;
+    }
+    80%{
+      top: 0;
+      left: 0;
+      opacity: 0.9;
+    }
+  }

@@ -52,7 +52,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Prevent default GET request
+    e.preventDefault();  
     if (validateForm()) {
       try {
         console.log("Attempting POST request to:", `${API_BASE_URL}/api/register`);
@@ -65,23 +65,21 @@ const Register = () => {
         console.log(response.data);
         navigate('/src/pages/BodyMessage.jsx');
       } catch (error) {
+        console.error('Error:', error);
         if (error.response) {
           console.error('Error response:', error.response.data);
+          if (error.response.status === 401) {
+            setErrors({ submit: 'Unauthorized request' });
+          }
         } else if (error.request) {
           console.error('Error request:', error.request);
         } else {
           console.error('Error message:', error.message);
         }
-        setErrors({ submit: 'Failed to register. Please try again.' 
-        });
-        console.info('email:',formData.email);
-        console.info('name:',formData.name);
-        console.info('lastname:',formData.lastname);
-        console.info('password:',formData.password);
-
+        setErrors({ submit: 'Failed to register. Please try again.' });
       }
     }
-  };
+};
   
 
   const handleInputChange = (e) => {
