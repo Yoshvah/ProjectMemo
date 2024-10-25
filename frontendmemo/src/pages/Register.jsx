@@ -55,7 +55,7 @@ const Register = () => {
     e.preventDefault();  // Prevent default GET request
     if (validateForm()) {
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/register`, {
+        const response = await axios.get(`${API_BASE_URL}/api/register`, {
           email: formData.email,
           name: formData.name,
           lastname: formData.lastname,

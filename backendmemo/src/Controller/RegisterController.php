@@ -14,25 +14,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RegisterController extends AbstractController
 {
     
-    #[Route('/api/register', name: 'api_register', methods: ['POST'])]
+    #[Route('/api/register', name: 'app-register', methods: ['GET'])]
     public function register(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
         ValidatorInterface $validator
     ): JsonResponse {
-        // Handle preflight CORS request
-        if ($request->getMethod() === 'OPTIONS') {
-            return new JsonResponse(null, JsonResponse::HTTP_OK, [
-                'Access-Control-Allow-Origin' => 'http://localhost:3000',
-                'Access-Control-Allow-Methods' => 'POST, OPTIONS',
-                'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
-            ]);
-        }
-
         // Step 1: Get data from the request (assuming it's JSON)
         $data = json_decode($request->getContent(), true);
-
+        dd($data);
         $email = $data['email'] ?? null;
         $name = $data['name'] ?? null;
         $lastname = $data['lastname'] ?? null;
@@ -59,7 +50,7 @@ class RegisterController extends AbstractController
         $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
         $user->setPassword($hashedPassword);
 
-        // Step 4: Validate the entity (validate all fields at once, including email, password length, etc.)
+        // Step 4: Validate the entity (validate all fields at once)
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
             $errorMessages = [];
@@ -74,8 +65,6 @@ class RegisterController extends AbstractController
         $entityManager->flush();
 
         // Step 6: Return a success response
-        return new JsonResponse(['message' => 'User registered successfully'], JsonResponse::HTTP_CREATED, [
-            'Access-Control-Allow-Origin' => 'http://localhost:3000',  // Include CORS header
-        ]);
+        return new JsonResponse(['message' => 'User registered successfully'], JsonResponse::HTTP_CREATED);
     }
 }

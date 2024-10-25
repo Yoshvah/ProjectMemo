@@ -4,6 +4,7 @@ import '../Styles/style.css'; // Make sure to import your CSS file
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ChatCard from "../pages/User/ChatCard.jsx";
 import Profile from "../pages/User/Profile.jsx";
+
 function MainMessage({ selectedMenu, handleSelectMenu }) {
   const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar
 
@@ -43,7 +44,7 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
         <div className="container-fluid">
           <div className="row flex-nowrap">
             {/* Sidebar */}
-            <div className={`col-auto ${isCollapsed ? "col-2" : "col-md-3 col-xl-2"} px-sm-2 px-0 bg-light-blue sidebar`}>
+            <div className={`col-auto ${isCollapsed ? "col-2" : "col-md-2 "} px-sm-1 px-0 bg-light-blue sidebar`}>
               <div className="d-flex flex-column align-items-center align-items-sm-start px-4 pt-2 min-vh-100">
                 
                 {/* User section at the top */}
@@ -113,12 +114,10 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
                 </div>
 
                 {/* Sidebar toggle button for small screens */}
-                <button
-                  className="btn btn-outline-dark mb-2 d-block d-sm-none"
-                  onClick={toggleSidebar}
-                >
-                  {isCollapsed ? '>' : 'x'}
+                <button className="btn btn-outline-dark mb-2 d-block d-sm-none" onClick={toggleSidebar}>
+                  {isCollapsed ? '>' : '<'}
                 </button>
+
               </div>
             </div>
 

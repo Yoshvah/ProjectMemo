@@ -377,3 +377,6 @@ a:focus {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, color */
   transition: box-shadow 0.3s ease; /* Optional: smooth transition for shadow on collapse */
 }
+/*.collapsed-sidebar {
+  width: 70px; /* Define the exact width when collapsed 
+/}*/
