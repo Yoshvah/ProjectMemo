@@ -494,6 +494,23 @@ html, body {
   font-size: 24px; /* Adjust size as needed */
   color: #4a90e2; /* Optional: match with your theme */
 }
+
+.attribute-row {
+  display: flex;
+  gap: 10px;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -507,33 +524,12 @@ html, body {
   z-index: 1000;
 }
 
-.modal {
-  background: #fff;
-  padding: 20px;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.modal-enter {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.modal h2 {
-  margin-bottom: 15px;
-}
-
-.modal input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.attribute-row {
-  display: flex;
-  gap: 10px;
-}
-
-.modal-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+.modal-exit {
+  opacity: 0;
+  transform: translateY(-20px);
 }

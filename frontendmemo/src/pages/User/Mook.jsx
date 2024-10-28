@@ -48,12 +48,21 @@ const Mook = () => {
   };
 
   // Modal handlers
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
+  const openModal = () => {
+    setShowModal(true);
+    setNewTitle(''); // Reset the title when opening the modal
+    setAttributes([{ key: '', value: '' }]); // Reset attributes
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    // Optional: Reset form on close if needed
+    setNewTitle('');
+    setAttributes([{ key: '', value: '' }]);
+  };
 
   // Add card attributes
-  const handleAddAttribute = () =>
-    setAttributes([...attributes, { key: '', value: '' }]);
+  const handleAddAttribute = () => setAttributes([...attributes, { key: '', value: '' }]);
 
   const handleAttributeChange = (index, key, value) => {
     const updatedAttributes = [...attributes];
@@ -63,12 +72,11 @@ const Mook = () => {
 
   // Save new card
   const handleSaveCard = () => {
+    if (!newTitle.trim()) return; // Prevent saving empty title
     setCards([
       ...cards,
       { title: newTitle, attributes, image: '', description: '', price: '' },
     ]);
-    setNewTitle('');
-    setAttributes([{ key: '', value: '' }]);
     closeModal();
   };
 
@@ -145,12 +153,14 @@ const Mook = () => {
                 + Add Attribute
               </button>
             </div>
-            <button onClick={handleSaveCard} className="save-card">
-              Save
-            </button>
-            <button onClick={closeModal} className="close-modal">
-              Cancel
-            </button>
+            <div className="modal-actions">
+              <button onClick={handleSaveCard} className="save-card">
+                Save
+              </button>
+              <button onClick={closeModal} className="close-modal">
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -208,4 +218,3 @@ const Mook = () => {
 };
 
 export default Mook;
-
