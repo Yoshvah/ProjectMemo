@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../Styles/Register.css";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import axios from "axios";
 const Register = () => {
-  const API_BASE_URL = 'http://localhost:8000'; 
-  console.log('API Base URL:', API_BASE_URL);
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -55,8 +51,8 @@ const Register = () => {
     e.preventDefault();  
     if (validateForm()) {
       try {
-        console.log("Attempting POST request to:", `${API_BASE_URL}/api/register`);
-        const response = await axios.post(`${API_BASE_URL}/api/register`, {
+        console.log("Attempting POST request to /register");
+        const response = await axios.post('/register', {
           email: formData.email,
           name: formData.name,
           lastname: formData.lastname,
@@ -79,8 +75,7 @@ const Register = () => {
         setErrors({ submit: 'Failed to register. Please try again.' });
       }
     }
-};
-  
+  };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;

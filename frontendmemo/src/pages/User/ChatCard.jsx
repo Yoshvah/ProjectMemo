@@ -19,7 +19,7 @@ const ChatCard = () => {
         <div className="row gutters">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div className="card m-0">
-              <div className="row no-gutters">
+              <div className="row no-gutters" id='row-gutters'>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                   <div className="users-container">
                     <div className="cht-search-box">

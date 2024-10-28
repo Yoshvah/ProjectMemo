@@ -84,7 +84,7 @@ const Mook = () => {
     <div className="main">
       {/* Button to add a new card */}
       <div className="button-container">
-        <button className="btn btn-outline-dark" onClick={openModal}>
+        <button className="btn btn-outline-dark" id='new-item' onClick={openModal}>
           Add New Item
         </button>
       </div>

@@ -17,7 +17,12 @@ class RegisterController extends AbstractController
     #[Route('/api/register', name: 'app-register-options', methods: ['OPTIONS'])]
     public function options(): JsonResponse
     {
-        return new JsonResponse(null, JsonResponse::HTTP_OK);
+        $response = new JsonResponse(null, JsonResponse::HTTP_OK);
+        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        $response->headers->set('Access-Control-Allow-Credentials', 'true'); // If needed
+        return $response;
     }
 
     // POST method for user registration
@@ -76,5 +81,9 @@ class RegisterController extends AbstractController
             'message' => 'User registered successfully',
             'userId' => $user->getId()  // Access the ID after flush
         ], JsonResponse::HTTP_CREATED);
+        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        $response->headers->set('Access-Control-Allow-Credentials', 'true'); // If needed
+        return $response;
     }
 }

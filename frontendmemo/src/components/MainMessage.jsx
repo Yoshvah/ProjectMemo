@@ -142,7 +142,7 @@ function MainMessage({ selectedMenu, handleSelectMenu }) {
                   </form>
                 </div>
               </nav>
-              <div className="container pt-5" style={{ backgroundColor: 'white' }}>
+              <div className="containerr" >
                 {content}
               </div>
             </div>

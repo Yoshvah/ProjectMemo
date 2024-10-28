@@ -380,3 +380,7 @@ a:focus {
 /*.collapsed-sidebar {
   width: 70px; /* Define the exact width when collapsed 
 /}*/
+.containerr {
+    background-color: white;
+    height: 100vh; /* Full viewport height */
+}

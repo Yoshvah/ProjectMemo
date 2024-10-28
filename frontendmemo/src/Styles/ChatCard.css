@@ -9,6 +9,9 @@ body {
     height: 100vh; /* Make the chat component take full viewport height */
     display: flex;
 }
+#row-gutters{
+    height: 90vh;
+}
 
 .content-wrapper {
     flex: 1; /* Allow wrapper to fill available space */
