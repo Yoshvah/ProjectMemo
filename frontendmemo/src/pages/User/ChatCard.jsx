@@ -22,7 +22,7 @@ const ChatCard = () => {
               <div className="row no-gutters">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                   <div className="users-container">
-                    <div className="chat-search-box">
+                    <div className="cht-search-box">
                       <div className="input-group">
                         <input className="form-control" placeholder="Search" />
                         <div className="input-group-btn">
@@ -51,15 +51,15 @@ const ChatCard = () => {
                   <div className="selected-user">
                     <span>To: <span className="name">Emily Russell</span></span>
                   </div>
-                  <div className="chat-container">
-                    <ul className="chat-box chatContainerScroll">
+                  <div className="cht-container">
+                    <ul className="cht-box chatContainerScroll">
                       {messages.map((msg, index) => (
-                        <li key={index} className="chat-right">
-                          <div className="chat-hour">08:59 <span className="fa fa-check-circle"></span></div>
-                          <div className="chat-text">{msg}</div>
-                          <div className="chat-avatar">
+                        <li key={index} className="cht-right">
+                          <div className="cht-hour">08:59 <span className="fa fa-check-circle"></span></div>
+                          <div className="cht-text">{msg}</div>
+                          <div className="cht-avatar">
                             <img src="https://www.bootdey.com/img/Content/avatar/avatar5.png" alt="Retail Admin" />
-                            <div className="chat-name">You</div>
+                            <div className="cht-name">You</div>
                           </div>
                         </li>
                       ))}
